@@ -1,8 +1,9 @@
 import 'package:explore_provider/provider/objectProvider.dart';
+import 'package:explore_provider/widgets/cheap_widget.dart';
+import 'package:explore_provider/widgets/expensive_widget.dart';
+import 'package:explore_provider/widgets/objectprovider_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'modals/baseClass.dart';
 
 void main() {
   runApp(const MyApp());
@@ -62,68 +63,6 @@ class HomePage extends StatelessWidget {
                   child: const Text("Start")),
             ],
           )
-        ],
-      ),
-    );
-  }
-}
-
-class ExpensiveWidget extends StatelessWidget {
-  const ExpensiveWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final expensiveObject = context.select<ObjectProvider, ExpensiveObject>(
-        (provider) => provider.expensiveObject);
-    return Container(
-      height: 100,
-      color: Colors.blue,
-      child: Column(
-        children: [
-          const Text('Expensive Object'),
-          const Text('Last updated'),
-          Text(expensiveObject.lastUpdated)
-        ],
-      ),
-    );
-  }
-}
-
-class CheapWidget extends StatelessWidget {
-  const CheapWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final cheapObject = context.select<ObjectProvider, CheapObject>(
-        (provider) => provider.cheapObject);
-    return Container(
-      height: 100,
-      color: Colors.yellow,
-      child: Column(
-        children: [
-          const Text('Cheap Object'),
-          const Text('Last updated'),
-          Text(cheapObject.lastUpdated)
-        ],
-      ),
-    );
-  }
-}
-
-class ObjectProviderWidget extends StatelessWidget {
-  const ObjectProviderWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final provider = context.watch<ObjectProvider>();
-    return Container(
-      height: 100,
-      color: Colors.yellow,
-      child: Column(
-        children: [
-          const Text('Watch Object'),
-          const Text('Id'),
-          Text(provider.id)
         ],
       ),
     );
